@@ -1,8 +1,23 @@
 <template>
   <div class="d-flex row">
     <div class="mnu-box col-7">
-        <router-link class="mnu-lnk" :to="{ name: 'exhibition' }">AIDT 전시관</router-link>
-        <router-link class="mnu-lnk" :to="{ name: 'archive' }">자료실</router-link>
+        <div class="btn-group dropup">
+            <router-link class="mnu-lnk dropdown-toggle" :to="{ name: 'exhibition' }" data-bs-toggle="dropdown" aria-expanded="false">AIDT 전시관</router-link>
+            <ul class="dropdown-menu">
+                <li><router-link class="dropdown-item mnu-lnk" :to="{ name: 'exhibition' }">AIDT 전시관</router-link></li>
+                <li><router-link class="dropdown-item mnu-lnk" :to="{ name: 'exhibition' }">AIDT 전시관</router-link></li>
+                <li><router-link class="dropdown-item mnu-lnk" :to="{ name: 'exhibition' }">AIDT 전시관</router-link></li>
+            </ul>
+        </div>
+        <div class="btn-group dropup">
+            <router-link class="mnu-lnk dropdown-toggle" :to="{ name: 'archive' }" data-bs-toggle="dropdown" aria-expanded="false">자료실</router-link>
+            <ul class="dropdown-menu">
+                <li><router-link class="mnu-lnk" :to="{ name: 'archive' }">초등 자료실</router-link></li>
+                <li><router-link class="mnu-lnk" :to="{ name: 'archive' }">중학 자료실</router-link></li>
+                <li><router-link class="mnu-lnk" :to="{ name: 'archive' }">고등 자료실</router-link></li>
+            </ul>
+        </div>
+        
         <router-link class="mnu-lnk" :to="{ name: 'support' }">AIDT 교육지원</router-link>
         <router-link class="mnu-lnk" :to="{ name: 'notice' }">AIDT 소식</router-link>
         <router-link class="mnu-lnk" :to="{ name: 'faq' }">고객센터</router-link>
@@ -57,7 +72,7 @@ export default {
 </script>
 
 <style scoped>
-li {
+li :not(.dropdown-menu) {
     list-style: none;
     cursor: pointer;
     float: left;
@@ -78,4 +93,7 @@ li {
     color:darkcyan;
     border: 1px solid #CCC;
 }
+.dropdown-toggle::after { 
+ content: none; 
+ }
 </style>
