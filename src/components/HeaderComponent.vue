@@ -1,15 +1,22 @@
 <template>
-  <v-app-bar app dark>
-    <v-container>
-        <v-row align="center">
-            <v-col class="d-flex justify-end">
-                <v-btn v-if="!isLogin" :to="{ path: '/member/create' }">회원가입</v-btn>
-                <v-btn v-if="!isLogin" :to="{ path: '/member/login' }">로그인</v-btn>
-                <v-btn v-if="isLogin" @click="doLogout()">로그아웃</v-btn>
-            </v-col>
-        </v-row>
-    </v-container>
-  </v-app-bar>
+  <div class="d-flex row">
+    <div class="mnu-box col-7">
+        <router-link class="mnu-lnk" :to="{ name: 'exhibition' }">AIDT 전시관</router-link>
+        <router-link class="mnu-lnk" :to="{ name: 'archive' }">자료실</router-link>
+        <router-link class="mnu-lnk" :to="{ name: 'support' }">AIDT 교육지원</router-link>
+        <router-link class="mnu-lnk" :to="{ name: 'notice' }">AIDT 소식</router-link>
+        <router-link class="mnu-lnk" :to="{ name: 'faq' }">고객센터</router-link>
+    </div>
+    <div class="d-flex justify-end col">
+        <ul>
+            <li v-if="!isLogin"><router-link class="btn btn-outline-secondary" :to="{ path: '/member/create'}">회원가입</router-link></li>
+            <li v-if="!isLogin"><router-link class="btn btn-outline-secondary" :to="{ path: '/member/login'}">로그인</router-link></li>
+            <li v-if="isLogin" class="btn btn-outline-secondary" @click="doLogout">로그아웃</li>
+            <li><router-link :to="{ name: 'sitemap' }">전체메뉴</router-link></li>
+        </ul>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -50,5 +57,25 @@ export default {
 </script>
 
 <style scoped>
-
+li {
+    list-style: none;
+    cursor: pointer;
+    float: left;
+    margin-right: 5px;
+}
+.mnu-box {
+    padding-top: 8px;
+}
+.mnu-lnk {
+    margin: 5px;
+    padding: 2px 5px;
+    text-decoration: none;
+    color: #444;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+}
+.mnu-lnk:hover {
+    color:darkcyan;
+    border: 1px solid #CCC;
+}
 </style>
