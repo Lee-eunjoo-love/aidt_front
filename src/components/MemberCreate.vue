@@ -10,12 +10,12 @@
                     <v-form>
                         <v-text-field
                             label="email"
-                            v-model.trim="uiData.email"
+                            v-model="email"
                         >
                         </v-text-field>
                         <v-text-field
                             label="패스워드"
-                            v-model="uiData.password"
+                            v-model="password"
                             type="password"
                         >
                         </v-text-field>
@@ -28,18 +28,29 @@
   </v-container>
 </template>
 
-<script setup>
+<script>
 import axios from 'axios';
-import { ref } from 'vue';
 
-const uiData = ref({
-    email: "",
-    password: "",
-}); // { "email": "hgd@chunjae.co.kr", "password": "akdirakf" }
-const memberCreate = async () => {
-    await axios.post("http://localhost:8080/member/create", uiData.value);
-    window.location.href = "/";//this.router.push({ path: '/' });//
-};
+export default {
+    name: "MemberCreate",
+    data() {
+        return {
+            email: "",
+            password: "",
+        }
+    },
+    methods: {
+        async memberCreate() {
+            const registerData = {
+                email: this.email,
+                password: this.password
+            }; // { "email": "hgd@chunjae.co.kr", "password": "akdirakf" }
+
+            await axios.post("http://localhost:8080/member/create", registerData);
+            window.location.href = "/";//this.router.push({ path: '/' });//
+        }
+    }
+}
 </script>
 
 <style scoped>
